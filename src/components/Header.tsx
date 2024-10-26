@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
+import { Button } from "./ui/button";
+import { signIn } from "next-auth/react";
 
 const Header = () => {
   return (
@@ -7,6 +11,9 @@ const Header = () => {
       <Link href={"/"}>
         <h2>Sparkify</h2>
       </Link>
+      <div className="__menu">
+        <Button onClick={() => signIn("google")}>Login</Button>
+      </div>
     </div>
   );
 };

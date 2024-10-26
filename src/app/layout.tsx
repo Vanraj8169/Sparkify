@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/Header";
+import Provider from "./provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,38 +17,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Sparkify",
-  description:
-    "Ignite your creativity with Sparkify, the AI-powered image generator that brings your ideas to life.",
-  keywords: "AI, image generator, creativity, art, design, graphics",
-  robots: "index, follow",
-  themeColor: "#FF5733", // You can change this to your preferred theme color
-  openGraph: {
-    title: "Sparkify",
-    description:
-      "Ignite your creativity with Sparkify, the AI-powered image generator that brings your ideas to life.",
-    url: "https://www.yourwebsite.com", // Change to your actual website URL
-    // site_name: "Sparkify",
-    type: "website",
-    images: [
-      {
-        url: "https://www.yourwebsite.com/sparkify-image.png", // Replace with your actual image URL
-        width: 1200,
-        height: 630,
-        alt: "Sparkify AI Image Generator",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@yourTwitterHandle", // Replace with your Twitter handle
-    title: "Sparkify",
-    description:
-      "Ignite your creativity with Sparkify, the AI-powered image generator that brings your ideas to life.",
-    images: "https://www.yourwebsite.com/sparkify-image.png", // Replace with your actual image URL
-  },
-};
-
+  title: 'Sparkify',
+  description: 'Generate classy Image using ai',
+}
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,8 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <Header />
-          {children}
+          <Provider>
+            <Header />
+            {children}
+          </Provider>
         </ThemeProvider>
       </body>
     </html>
